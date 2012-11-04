@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    awesome_print (1.0.2)
     backports (2.6.5)
     coderay (1.0.7)
     coffee-script (2.2.0)
@@ -68,6 +69,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   dashing
   hashie
   pry

@@ -1,23 +1,29 @@
 require 'rest-client'
 require 'json'
-require 'uri'
-require 'pry'
 require 'hashie'
 
-query = {
-  country: 'AU',
-  city: 'Melbourne'
+exit unless $CONFIG.weather
+
+MINUTES_IN_DAY = 1440
+CELSIUS_SYMBOL = "&#8451;"
+WEATHER_CONFIG = $CONFIG.weather
+
+detail = {
+  country: WEATHER_CONFIG.lookup.country_code,
+  city: WEATHER_CONFIG.lookup.city,
+  api_key: WEATHER_CONFIG.api_key
 }
 
-base_uri = "http://api.wunderground.com/api/0bd4fdd3587a2caf/conditions/q/%<country>s/%<city>s.json"
-uri = sprintf(base_uri, query)
+schedule_every =  (MINUTES_IN_DAY.to_f / WEATHER_CONFIG.max_calls_per_day.to_f).ceil
 
-SCHEDULER.every '5m', :first_in => 0 do |job|
+base_uri = "http://api.wunderground.com/api/%<api_key>s/conditions/q/%<country>s/%<city>s.json"
+uri = sprintf(base_uri, detail)
+
+SCHEDULER.every "#{schedule_every}m", :first_in => 0 do |job|
   response = Hashie::Mash.new(JSON.parse(RestClient.get(uri)))
 
   observartion = response.current_observation
   location = observartion.display_location
-  celsius = "&#8451;"
 
   weather = {
     location: {
@@ -26,11 +32,9 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
       lng: location.longitude
     },
     temperature: {
-      current: "#{observartion.temp_c} #{celsius}"
+      current: "#{observartion.temp_c} #{CELSIUS_SYMBOL}"
     }
   }
 
-  text = weather[:temperature][:current]
-
-  send_event('weather', weather: weather, text: text)
+  send_event('weather', weather: weather)
 end

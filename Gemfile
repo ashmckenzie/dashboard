@@ -5,6 +5,7 @@ gem 'rest-client'
 gem 'hashie'
 gem 'nokogiri'
 gem 'unicorn'
+gem 'therubyracer'
 
 group :development do
   gem 'pry'

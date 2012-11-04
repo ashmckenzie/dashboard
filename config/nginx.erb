@@ -3,7 +3,7 @@ upstream unicorn_<%= config['name'] %> {
 }
 
 server {
-  listen 8080 deferred;
+  listen 8080;
   passenger_enabled off;
 
   server_name  <%= config['server_name'] %>;

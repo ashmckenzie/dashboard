@@ -1,9 +1,3 @@
-require 'rest-client'
-require 'json'
-require 'hashie'
-
-exit unless $CONFIG.weather
-
 MINUTES_IN_DAY = 1440
 WEATHER_CONFIG = $CONFIG.weather
 

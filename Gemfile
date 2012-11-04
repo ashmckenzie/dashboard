@@ -4,6 +4,7 @@ gem 'dashing'
 gem 'rest-client'
 gem 'hashie'
 gem 'nokogiri'
+gem 'unicorn'
 
 group :development do
   gem 'pry'

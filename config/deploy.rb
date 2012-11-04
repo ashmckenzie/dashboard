@@ -38,6 +38,7 @@ after "deploy:setup", "deploy:more_setup"
 before "deploy:create_symlink",
   "deploy:configs",
   "nginx:config",
+  "unicorn:config",
   "nginx:reload"
 
 require 'capistrano-unicorn'
@@ -84,8 +85,8 @@ namespace :unicorn do
     config = $CONFIG.deploy.unicorn
     config.working_directory = "#{current_release}"
     config.pid = "#{shared_path}/pids/unicorn.pid"
-    config.stdout_log = "#{shared_path}/log/#{$CONFIG.deploy.app_name}_stdout.log"
-    config.stderr_log = "#{shared_path}/log/#{$CONFIG.deploy.app_name}_stderr.log"
+    config.stdout_log = "#{shared_path}/log/#{$CONFIG.deploy.name}_stdout.log"
+    config.stderr_log = "#{shared_path}/log/#{$CONFIG.deploy.name}_stderr.log"
 
     unicorn_file = "#{shared_path}/config/unicorn/production.rb"
 

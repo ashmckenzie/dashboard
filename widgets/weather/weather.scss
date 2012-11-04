@@ -11,8 +11,18 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 // ----------------------------------------------------------------------------
 .widget-weather {
 
+  h2 {
+    padding-top: 16px;
+    font-size: 1em;
+  }
+
   h4 {
     font-size: 0.7em;
+  }
+
+  h5 {
+    display: inline;
+    font-size: 0.8em;
   }
 
   background-color: $background-color;

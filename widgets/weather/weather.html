@@ -1,7 +1,12 @@
 <h1 class="title" data-bind="title"></h1>
 
-<h3 data-bind="current_temperature | raw"></h3>
+<h3 data-bind="current_temperature | raw | append '&#8451;'"></h3>
 <h4 data-bind="location | raw"></h4>
+
+<h2>Forecast</h2>
+
+<h5 data-bind="forecast_high | raw | prepend 'Top ' | append '&#8451;'"></h5>
+<h5 data-bind="forecast_low | raw | prepend 'Low ' | append '&#8451;'"></h5>
 
 <p class="more-info" data-bind="moreinfo | raw"></p>
 

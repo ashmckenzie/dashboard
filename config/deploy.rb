@@ -62,6 +62,7 @@ namespace :nginx do
   desc 'Deploy nginx site configuration'
   task :config do
     config = $CONFIG.deploy.nginx
+    config.name = $CONFIG.deploy.name
 
     nginx_base_dir = "/etc/nginx"
     nginx_available_dir = "#{nginx_base_dir}/sites-available"
@@ -83,6 +84,7 @@ namespace :unicorn do
   desc 'Deploy unicorn configuration'
   task :config do
     config = $CONFIG.deploy.unicorn
+    config.name = $CONFIG.deploy.name
     config.working_directory = "#{current_release}"
     config.pid = "#{shared_path}/pids/unicorn.pid"
     config.stdout_log = "#{shared_path}/log/#{$CONFIG.deploy.name}_stdout.log"

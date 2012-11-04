@@ -1,25 +1,24 @@
-upstream unicorn {
-  server unix:/tmp/unicorn.<%= config['app_name'] %>.sock fail_timeout=0;
+upstream unicorn_<%= config['name'] %> {
+  server unix:/tmp/unicorn.<%= config['name'] %>.sock fail_timeout=0;
 }
 
 server {
-  passenger_enabled off;
-
   listen 8080 deferred;
+  passenger_enabled off;
 
   server_name  <%= config['server_name'] %>;
   root <%= config['root'] %>;
-  try_files $uri/index.html $uri @unicorn;
+  try_files $uri/index.html $uri @unicorn_<%= config['name'] %>;
 
-  location @unicorn {
+  location @unicorn_<%= config['name'] %> {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_redirect off;
-    proxy_pass http://unicorn;
+    proxy_pass http://unicorn_<%= config['name'] %>;
   }
 
-  access_log  /var/log/nginx/<%= config['app_name'] %>.access.log  combined;
-  error_log  /var/log/nginx/<%= config['app_name'] %>.error.log;
+  access_log  /var/log/nginx/<%= config['name'] %>.access.log  combined;
+  error_log  /var/log/nginx/<%= config['name'] %>.error.log;
 
   # redirect server error pages to the static page /50x.html
   #

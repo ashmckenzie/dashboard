@@ -12,5 +12,5 @@ group :development do
   gem 'pry-remote'
   gem 'capistrano'
   gem 'capistrano_colors'
-  gem 'capistrano-unicorn', :git => 'git@github.com:ashmckenzie/capistrano-unicorn.git'
+  gem 'capistrano-unicorn', :git => 'git@github.com:ashmckenzie/capistrano-unicorn.git', :require => false
 end

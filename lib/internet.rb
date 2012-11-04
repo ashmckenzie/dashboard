@@ -1,5 +1,3 @@
-require 'pry'
-
 class Internet
 
   def self.usage

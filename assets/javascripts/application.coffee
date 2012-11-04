@@ -7,6 +7,17 @@
 
 console.log("Yeah! The dashboard has started!")
 
+Batman.Filters.shortenedBytes = (num) ->
+  return num if isNaN(num)
+  if num >= 1000000000
+    (num / 1000000000).toFixed(1) + 'G'
+  else if num >= 1000000
+    (num / 1000000).toFixed(1) + 'M'
+  else if num >= 1000
+    (num / 1000).toFixed(1) + 'K'
+  else
+    num
+
 Dashing.on 'ready', ->
   Dashing.debugMode = true
   Dashing.widget_margins ||= [5, 5]

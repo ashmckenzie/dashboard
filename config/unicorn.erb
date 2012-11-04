@@ -1,0 +1,8 @@
+working_directory "<%= config['working_directory'] %>"
+pid "<%= config['pid'] %>"
+stderr_path "<%= config['stderr_log'] %>"
+stdout_path "<%= config['stdout_log'] %>"
+
+listen "/tmp/unicorn.<%= config['app_name'] %>.sock"
+worker_processes <%= config['worker_processes'] %>
+timeout 30

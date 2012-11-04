@@ -1,5 +1,5 @@
 MINUTES_IN_DAY = 1440
-WEATHER_CONFIG = $CONFIG.weather
+WEATHER_CONFIG = $APP_CONFIG.weather
 
 locations = WEATHER_CONFIG.locations
 schedule_every = (((MINUTES_IN_DAY.to_f / WEATHER_CONFIG.max_calls_per_day.to_f).ceil * locations.length) * 2)

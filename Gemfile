@@ -9,4 +9,8 @@ group :development do
   gem 'pry'
   gem 'awesome_print'
   gem 'shotgun'
+  gem 'pry-remote'
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-unicorn', :git => 'git@github.com:ashmckenzie/capistrano-unicorn.git'
 end

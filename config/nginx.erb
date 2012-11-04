@@ -1,0 +1,36 @@
+upstream unicorn {
+  server unix:/tmp/unicorn.<%= config['app_name'] %>.sock fail_timeout=0;
+}
+
+server {
+  passenger_enabled off;
+
+  listen 8080 deferred;
+
+  server_name  <%= config['server_name'] %>;
+  root <%= config['root'] %>;
+  try_files $uri/index.html $uri @unicorn;
+
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+  access_log  /var/log/nginx/<%= config['app_name'] %>.access.log  combined;
+  error_log  /var/log/nginx/<%= config['app_name'] %>.error.log;
+
+  # redirect server error pages to the static page /50x.html
+  #
+  error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+    root   html;
+  }
+
+  # deny access to .git directories
+  #
+  location ~ /\.git {
+    deny all;
+  }
+}

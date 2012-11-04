@@ -7,11 +7,11 @@ class Weather
     detail = {
       country: URI.escape(country_code),
       city: URI.escape(city),
-      api_key: $CONFIG.weather.api_key
+      api_key: $APP_CONFIG.weather.api_key
     }
 
     uri_options = "%<api_key>s/conditions/q/%<country>s/%<city>s.json"
-    uri = URI.parse("#{$CONFIG.weather.base_uri}/#{sprintf(uri_options, detail)}")
+    uri = URI.parse("#{$APP_CONFIG.weather.base_uri}/#{sprintf(uri_options, detail)}")
 
     response = JSONGet.request(uri.to_s)
 
@@ -35,11 +35,11 @@ class Weather
     detail = {
       country: URI.escape(country_code),
       city: URI.escape(city),
-      api_key: $CONFIG.weather.api_key
+      api_key: $APP_CONFIG.weather.api_key
     }
 
     uri_options = "%<api_key>s/forecast/q/%<country>s/%<city>s.json"
-    uri = URI.parse("#{$CONFIG.weather.base_uri}/#{sprintf(uri_options, detail)}")
+    uri = URI.parse("#{$APP_CONFIG.weather.base_uri}/#{sprintf(uri_options, detail)}")
 
     response = JSONGet.request(uri.to_s)
 

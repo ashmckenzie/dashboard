@@ -1,9 +1,9 @@
 <h1 class="title" data-bind="title"></h1>
 
-<h3 class="value" data-bind="usage | shortenedBytes"></h3>
-of
-<h3 class="value" data-bind="quota | shortenedBytes"></h3>
+<h2 class="value usage" data-bind="usage | shortenedBytes"></h2>
+/
+<h2 class="value quota" data-bind="quota | shortenedBytes"></h2>
 
-<h4 class="value" data-bind="percentUsed | append '% used'"></h4>
+<h3 class="value" data-bind="percentUsed | append '% used'"></h3>
 
 <p class="updated-at" data-bind="updatedAtMessage"></p>

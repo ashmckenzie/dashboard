@@ -11,9 +11,16 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 // ----------------------------------------------------------------------------
 .widget-weather {
 
+  vertical-align: top !important;
+
   h2 {
-    padding-top: 16px;
-    font-size: 1em;
+    padding-top: 0;
+    font-size: 1.2em;
+    text-transform: none;
+  }
+
+  h3.tomorrow {
+    margin-top: 16px;
   }
 
   h4 {

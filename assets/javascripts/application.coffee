@@ -18,6 +18,11 @@ Batman.Filters.shortenedBytes = (num) ->
   else
     num
 
+Dashing.Widget.accessor 'updatedAtMessagePrecise', ->
+  if updatedAt = @get('updatedAt')
+    timestamp = updatedAt.toString().match(/\d*:\d*:\d*/)[0]
+    "Last updated at #{timestamp}"
+
 Dashing.on 'ready', ->
   Dashing.debugMode = true
   Dashing.widget_margins ||= [5, 5]

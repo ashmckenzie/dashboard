@@ -1,5 +1,7 @@
-SCHEDULER.every "30m", :first_in => 0 do |job|
-  usage = Internet.usage
+INTERNET_CONFIG = $APP_CONFIG.internet
+
+SCHEDULER.every INTERNET_CONFIG.refresh, :first_in => 0 do |job|
+  usage = Internet::Internode.usage
   data = {
     usage: usage[:usage],
     quota: usage[:quota],

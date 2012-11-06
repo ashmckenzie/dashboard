@@ -3,11 +3,17 @@ class Dashing.Weather extends Dashing.Widget
   @accessor 'location', ->
     @get('weather').location.name
 
-  @accessor 'current_temperature', ->
-    @get('weather').temperature.current
+  @accessor 'current', ->
+    @get('weather').temperature.today.current
 
-  @accessor 'forecast_high', ->
-    @get('forecast').high
+  @accessor 'today_high', ->
+    @get('weather').temperature.today.high
 
-  @accessor 'forecast_low', ->
-    @get('forecast').low
+  @accessor 'today_low', ->
+    @get('weather').temperature.today.low
+
+  @accessor 'tomorrow_high', ->
+    @get('weather').temperature.tomorrow.high
+
+  @accessor 'tomorrow_low', ->
+    @get('weather').temperature.tomorrow.low

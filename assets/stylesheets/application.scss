@@ -253,3 +253,11 @@ h3 {
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
+// ----------------------------------------------------------------------------
+// Utils
+// ----------------------------------------------------------------------------
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

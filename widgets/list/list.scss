@@ -11,12 +11,12 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 // ----------------------------------------------------------------------------
 // Widget-list styles
 // ----------------------------------------------------------------------------
-.widget-list { 
+.widget-list {
 
   background-color: $background-color;
   vertical-align: top;
 
-  .title { 
+  .title {
     color: $title-color;
   }
 
@@ -38,15 +38,27 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
     list-style: none;
   }
 
+  .label, .value {
+    display: block;
+  }
+
   .label {
-    color: $label-color;    
+    clear: both;
+    color: $label-color;
+    float: left;
+    font-size: 0.6em;
+    &.truncate {
+      width: 124px;
+    }
   }
 
   .value {
-    float: right;
-    margin-left: 12px;
-    font-weight: 600;
     color: $value-color;
+    float: right;
+    font-size: 0.7em;
+    margin-left: 12px;
+    position: relative;
+    top: -2px;
   }
 
   .updated-at {

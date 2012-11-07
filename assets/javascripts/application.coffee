@@ -24,7 +24,7 @@ Dashing.Widget.accessor 'updatedAtMessagePrecise', ->
     "Last updated at #{timestamp}"
 
 Dashing.on 'ready', ->
-  Dashing.debugMode = true
+  Dashing.debugMode = false
   Dashing.widget_margins ||= [5, 5]
   Dashing.widget_base_dimensions ||= [240, 300]
   Dashing.numColumns ||= 5

@@ -261,3 +261,16 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+[data-id="downloads-queue"] {
+  span.truncate {
+    width: 146px;
+  }
+}
+
+[data-id="downloads-history"] {
+  span.truncate {
+    width: 186px;
+  }
+}
+

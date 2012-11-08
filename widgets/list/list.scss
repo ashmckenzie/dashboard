@@ -47,9 +47,6 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
     color: $label-color;
     float: left;
     font-size: 0.6em;
-    &.truncate {
-      width: 124px;
-    }
   }
 
   .value {

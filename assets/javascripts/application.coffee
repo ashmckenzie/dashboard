@@ -20,8 +20,11 @@ Batman.Filters.shortenedBytes = (num) ->
 
 Dashing.Widget.accessor 'updatedAtMessagePrecise', ->
   if updatedAt = @get('updatedAt')
-    timestamp = updatedAt.toString().match(/\d*:\d*:\d*/)[0]
+    timestamp = moment(updatedAt.toString(), 'YYYY-MM-DD H:mm:ss z').format('hh:mm:ss A')
     "Last updated at #{timestamp}"
+
+Dashing.Widget.accessor 'updatedAtMessage', ->
+  @get('updatedAtMessagePrecise')
 
 Dashing.on 'ready', ->
   Dashing.debugMode = false

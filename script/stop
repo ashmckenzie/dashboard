@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. /etc/profile
+
+/bin/kill `cat /home/apps/dashboard/current/tmp/pids/unicorn.pid`

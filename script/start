@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source /etc/profile
+
+cd /home/apps/dashboard/current
+bundle exec unicorn -c /home/apps/dashboard/current/config/unicorn/production.rb -E production -D
